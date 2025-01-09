@@ -5,6 +5,18 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
+    "apps/seahorse/listing" = {
+      keyrings-selected = [ "openssh:///home/juge/.ssh" ];
+    };
+
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "/org/gnome/shell/app-picker-layout";
+      saved-view = "/org/gnome/shell/app-picker-layout";
+      window-height = 500;
+      window-is-maximized = false;
+      window-width = 540;
+    };
+
     "org/gnome/Console" = {
       last-window-maximised = false;
       last-window-size = mkTuple [ 1815 964 ];
@@ -16,7 +28,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "wifi";
+      last-panel = "mouse";
       window-state = mkTuple [ 980 640 false ];
     };
 
@@ -69,11 +81,19 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" ];
+      application-children = [ "org-gnome-console" "gnome-power-panel" ];
+    };
+
+    "org/gnome/desktop/notifications/application/gnome-power-panel" = {
+      application-id = "gnome-power-panel.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
       application-id = "org.gnome.Console.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-settings" = {
+      application-id = "org.gnome.Settings.desktop";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
@@ -82,7 +102,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/peripherals/mouse" = {
       accel-profile = "flat";
-      speed = 0.49612403100775193;
+      speed = 0.496124;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -216,6 +236,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
       home = [ "<Super>bracketright" ];
       search = [ "<Super>d" ];
       www = [ "<Super>backslash" ];
@@ -223,8 +244,8 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "kitty";
-      name = "Open Terminal";
+      command = "kitty zellij attach -c";
+      name = "Kitty";
     };
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
@@ -234,9 +255,135 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
+      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+      favorite-apps = [ "firefox.desktop" "org.gnome.Nautilus.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" ];
       welcome-dialog-last-shown-version = "47.2";
+    };
+
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      apply-custom-theme = true;
+      background-opacity = 0.8;
+      dash-max-icon-size = 48;
+      dock-position = "LEFT";
+      height-fraction = 0.9;
+      hot-keys = false;
+      multi-monitor = false;
+      preferred-monitor = -2;
+      preferred-monitor-by-connector = "DP-1";
+    };
+
+    "org/gnome/shell/extensions/openbar" = {
+      apply-menu-notif = true;
+      apply-menu-shell = true;
+      autofg-menu = true;
+      autohg-menu = false;
+      bcolor = [ "0.000" "0.000" "0.000" ];
+      bg-change = true;
+      bgalpha2 = 0.69;
+      bgcolor = [ "0.017" "0.017" "0.017" ];
+      bgcolor-wmax = [ "0.017" "0.017" "0.017" ];
+      bgcolor2 = [ "0.753" "0.380" "0.796" ];
+      bguri = "file:///run/current-system/sw/share/backgrounds/gnome/neogeo-d.jxl";
+      boxcolor = [ "0.017" "0.017" "0.017" ];
+      bradius = 0.0;
+      candybar = false;
+      count1 = 238246;
+      count10 = 469;
+      count11 = 398;
+      count12 = 234;
+      count2 = 175681;
+      count3 = 135828;
+      count4 = 128800;
+      count5 = 122708;
+      count6 = 117302;
+      count7 = 41123;
+      count8 = 38166;
+      count9 = 1045;
+      dark-bcolor = [ "0.000" "0.000" "0.000" ];
+      dark-bgcolor = [ "0.017" "0.017" "0.017" ];
+      dark-bgcolor-wmax = [ "0.017" "0.017" "0.017" ];
+      dark-bgcolor2 = [ "0.753" "0.380" "0.796" ];
+      dark-bguri = "file:///run/current-system/sw/share/backgrounds/gnome/neogeo-d.jxl";
+      dark-boxcolor = [ "0.017" "0.017" "0.017" ];
+      dark-dbgcolor = [ "0.017" "0.017" "0.017" ];
+      dark-mbcolor = [ "0.000" "0.000" "0.000" ];
+      dark-mbgcolor = [ "0.017" "0.017" "0.017" ];
+      dark-mhcolor = [ "0.000" "0.000" "0.000" ];
+      dark-mscolor = [ "0.000" "0.000" "0.000" ];
+      dark-mshcolor = [ "0.000" "0.000" "0.000" ];
+      dark-palette1 = [ "83" "83" "99" ];
+      dark-palette10 = [ "100" "115" "123" ];
+      dark-palette11 = [ "172" "154" "132" ];
+      dark-palette12 = [ "164" "84" "72" ];
+      dark-palette2 = [ "180" "121" "77" ];
+      dark-palette3 = [ "202" "202" "161" ];
+      dark-palette4 = [ "139" "64" "75" ];
+      dark-palette5 = [ "84" "52" "68" ];
+      dark-palette6 = [ "101" "124" "124" ];
+      dark-palette7 = [ "140" "164" "147" ];
+      dark-palette8 = [ "140" "155" "145" ];
+      dark-palette9 = [ "203" "164" "92" ];
+      dashdock-style = "Custom";
+      dbgcolor = [ "0.017" "0.017" "0.017" ];
+      dbradius = 0.0;
+      default-font = "Sans 12";
+      disize = 40.0;
+      gradient = false;
+      height = 29.0;
+      import-export = false;
+      light-bguri = "file:///run/current-system/sw/share/backgrounds/gnome/neogeo-l.jxl";
+      light-palette1 = [ "202" "193" "153" ];
+      light-palette10 = [ "99" "97" "91" ];
+      light-palette11 = [ "180" "116" "114" ];
+      light-palette12 = [ "180" "124" "108" ];
+      light-palette2 = [ "146" "183" "110" ];
+      light-palette3 = [ "124" "155" "174" ];
+      light-palette4 = [ "100" "140" "114" ];
+      light-palette5 = [ "104" "104" "132" ];
+      light-palette6 = [ "84" "68" "84" ];
+      light-palette7 = [ "180" "124" "116" ];
+      light-palette8 = [ "170" "124" "116" ];
+      light-palette9 = [ "165" "189" "165" ];
+      margin = 4.1;
+      mbcolor = [ "0.000" "0.000" "0.000" ];
+      mbgcolor = [ "0.017" "0.017" "0.017" ];
+      menu-radius = 0.0;
+      menustyle = true;
+      mhcolor = [ "0.000" "0.000" "0.000" ];
+      mscolor = [ "0.000" "0.000" "0.000" ];
+      mshalpha = 0.0;
+      mshcolor = [ "0.000" "0.000" "0.000" ];
+      neon = false;
+      palette1 = [ "83" "83" "99" ];
+      palette10 = [ "100" "115" "123" ];
+      palette11 = [ "172" "154" "132" ];
+      palette12 = [ "164" "84" "72" ];
+      palette2 = [ "180" "121" "77" ];
+      palette3 = [ "202" "202" "161" ];
+      palette4 = [ "139" "64" "75" ];
+      palette5 = [ "84" "52" "68" ];
+      palette6 = [ "101" "124" "124" ];
+      palette7 = [ "140" "164" "147" ];
+      palette8 = [ "140" "155" "145" ];
+      palette9 = [ "203" "164" "92" ];
+      pause-reload = false;
+      reloadstyle = true;
+      set-overview = false;
+      shadow = false;
+      shalpha = 0.14;
+      trigger-reload = true;
+    };
+
+    "org/gnome/shell/extensions/window-list" = {
+      display-all-workspaces = false;
+      embed-previews = true;
+      grouping-mode = "never";
+      show-on-all-monitors = true;
+    };
+
+    "org/gnome/shell/extensions/workspace-indicator" = {
+      embed-previews = false;
     };
 
     "org/gnome/shell/keybindings" = {
@@ -254,6 +401,11 @@ with lib.hm.gvariant;
 
     "org/gnome/shell/world-clocks" = {
       locations = [];
+    };
+
+    "org/gtk/gtk4/settings/color-chooser" = {
+      custom-colors = [ (mkTuple [ 0.753000020980835 0.3799999952316284 0.7960000038146973 1.0 ]) (mkTuple [ 0.0 0.699999988079071 0.75 1.0 ]) (mkTuple [ 1.6666999086737633e-2 1.6666999086737633e-2 1.6666999086737633e-2 1.0 ]) (mkTuple [ 0.125 0.125 0.125 1.0 ]) ];
+      selected-color = mkTuple [ true 1.6666999086737633e-2 1.6666999086737633e-2 1.6666999086737633e-2 1.0 ];
     };
 
   };

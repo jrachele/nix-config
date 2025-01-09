@@ -8,9 +8,13 @@
           url = "github:nix-community/home-manager";
           inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      nvf.url = "github:notashelf/nvf";
+
+      #zig.url = "github:mitchellh/zig-overlay";
   };
 
-  outputs = {self, nixpkgs, home-manager,...}@inputs:
+  outputs = {self, nixpkgs, home-manager, nvf, ...}@inputs:
   let 
     lib = nixpkgs.lib;
     system = "x86_64-linux";
@@ -22,14 +26,17 @@
             specialArgs = {inherit inputs;};
             modules = [ 
             ./nixos/configuration.nix 
-            inputs.home-manager.nixosModules.default
+            home-manager.nixosModules.default
             ];
           };
       };
 
     homeConfigurations.juge = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [ ./home-manager/home.nix ];
+      modules = [ 
+      nvf.homeManagerModules.default
+      ./home-manager/home.nix
+      ];
     };
   };
 

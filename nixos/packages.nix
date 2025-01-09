@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [];
@@ -29,9 +29,11 @@
 
     # coding
     neovim
+    jetbrains.rust-rover
     gnumake
     gcc
-    (python3.withPackages (ps: with ps; [ requests ]))
+    lldb
+    (python3.withPackages (ps: with ps; [requests]))
     zig
     zls
 
@@ -72,4 +74,3 @@
     nerd-fonts.symbols-only
   ];
 }
-
