@@ -7,7 +7,6 @@
   environment.systemPackages = with pkgs; [
     # terminal
     kitty
-    zellij
     zsh-autosuggestions
     zsh-prezto
 
@@ -36,6 +35,16 @@
     (python3.withPackages (ps: with ps; [requests]))
     zig
     zls
+
+    glfw-wayland
+    wayland
+    wayland-protocols
+    xorg.libX11
+    xorg.libXcursor
+    xorg.libXi
+    xorg.libXinerama
+    xorg.libXrandr
+    xorg.libXxf86vm
 
     # productivity/social
     obs-studio

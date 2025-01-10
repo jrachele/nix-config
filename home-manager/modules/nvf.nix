@@ -3,6 +3,7 @@
     enable = true;
     settings = {
       config.vim = {
+        useSystemClipboard = true;
         statusline.lualine.enable = true;
         telescope.enable = true;
         autocomplete.nvim-cmp.enable = true;

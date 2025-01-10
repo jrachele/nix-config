@@ -12,9 +12,10 @@ with lib.hm.gvariant;
     "ca/desrt/dconf-editor" = {
       saved-pathbar-path = "/org/gnome/shell/app-picker-layout";
       saved-view = "/org/gnome/shell/app-picker-layout";
-      window-height = 500;
+      show-warning = false;
+      window-height = 1011;
       window-is-maximized = false;
-      window-width = 540;
+      window-width = 1529;
     };
 
     "org/gnome/Console" = {
@@ -28,7 +29,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "mouse";
+      last-panel = "multitasking";
       window-state = mkTuple [ 980 640 false ];
     };
 
@@ -78,6 +79,7 @@ with lib.hm.gvariant;
       clock-show-weekday = true;
       color-scheme = "prefer-dark";
       enable-hot-corners = false;
+      gtk-theme = "orchis-theme";
     };
 
     "org/gnome/desktop/notifications" = {
@@ -86,6 +88,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/kitty" = {
+      application-id = "kitty.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
@@ -204,21 +210,54 @@ with lib.hm.gvariant;
       switch-windows-backward = [];
       toggle-above = [];
       toggle-fullscreen = [];
-      toggle-maximized = [];
+      toggle-maximized = [ "<Super>slash" ];
       toggle-on-all-workspaces = [];
       unmaximize = [];
     };
 
     "org/gnome/desktop/wm/preferences" = {
+      button-layout = "appmenu:minimize,maximize,close";
       num-workspaces = 10;
+      resize-with-right-button = true;
     };
 
     "org/gnome/evolution-data-server" = {
       migrated = true;
     };
 
+    "org/gnome/file-roller/listing" = {
+      list-mode = "as-folder";
+      name-column-width = 65;
+      show-path = false;
+      sort-method = "name";
+      sort-type = "ascending";
+    };
+
+    "org/gnome/file-roller/ui" = {
+      sidebar-width = 200;
+      window-height = 480;
+      window-width = 600;
+    };
+
+    "org/gnome/gnome-system-monitor" = {
+      show-dependencies = false;
+      show-whose-processes = "user";
+      window-height = 1060;
+      window-width = 1192;
+    };
+
+    "org/gnome/gnome-system-monitor/proctree" = {
+      col-26-visible = false;
+      col-26-width = 0;
+    };
+
     "org/gnome/mutter" = {
       dynamic-workspaces = false;
+      workspaces-only-on-primary = false;
+    };
+
+    "org/gnome/nautilus/list-view" = {
+      default-zoom-level = "small";
     };
 
     "org/gnome/nautilus/preferences" = {
@@ -244,7 +283,7 @@ with lib.hm.gvariant;
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "kitty zellij attach -c";
+      command = "kitty zellij";
       name = "Kitty";
     };
 
@@ -257,7 +296,7 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
       enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
-      favorite-apps = [ "firefox.desktop" "org.gnome.Nautilus.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" ];
+      favorite-apps = [ "firefox.desktop" "org.gnome.Nautilus.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" "rust-rover.desktop" "obsidian.desktop" "youtube-music.desktop" ];
       welcome-dialog-last-shown-version = "47.2";
     };
 
@@ -368,7 +407,7 @@ with lib.hm.gvariant;
       palette8 = [ "140" "155" "145" ];
       palette9 = [ "203" "164" "92" ];
       pause-reload = false;
-      reloadstyle = true;
+      reloadstyle = false;
       set-overview = false;
       shadow = false;
       shalpha = 0.14;
@@ -404,8 +443,23 @@ with lib.hm.gvariant;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.753000020980835 0.3799999952316284 0.7960000038146973 1.0 ]) (mkTuple [ 0.0 0.699999988079071 0.75 1.0 ]) (mkTuple [ 1.6666999086737633e-2 1.6666999086737633e-2 1.6666999086737633e-2 1.0 ]) (mkTuple [ 0.125 0.125 0.125 1.0 ]) ];
-      selected-color = mkTuple [ true 1.6666999086737633e-2 1.6666999086737633e-2 1.6666999086737633e-2 1.0 ];
+      custom-colors = [ (mkTuple [ 0.753 0.38 0.796 1.0 ]) (mkTuple [ 0.0 0.7 0.75 1.0 ]) (mkTuple [ 1.6667e-2 1.6667e-2 1.6667e-2 1.0 ]) (mkTuple [ 0.125 0.125 0.125 1.0 ]) ];
+      selected-color = mkTuple [ true 1.6667e-2 1.6667e-2 1.6667e-2 1.0 ];
+    };
+
+    "org/gtk/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = false;
+      show-size-column = true;
+      show-type-column = true;
+      sidebar-width = 157;
+      sort-column = "name";
+      sort-directories-first = false;
+      sort-order = "ascending";
+      type-format = "category";
+      window-position = mkTuple [ 679 246 ];
+      window-size = mkTuple [ 1203 902 ];
     };
 
   };

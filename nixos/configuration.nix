@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -11,6 +12,8 @@
     ./hardware-configuration.nix
     ./packages.nix
   ];
+
+  swapDevices = lib.mkForce [];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
