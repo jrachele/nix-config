@@ -1,0 +1,14 @@
+default_mode "normal"
+theme "catppuccin-mocha"
+
+keybinds {
+  unbind "Ctrl n" "Ctrl p"
+  normal {
+    bind "Ctrl a" { SwitchToMode "pane"; };
+    bind "Alt q" { CloseFocus; };
+  }
+
+  pane { 
+    bind "Ctrl a" { SwitchToMode "normal"; };
+  }
+}

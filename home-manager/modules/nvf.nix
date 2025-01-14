@@ -62,6 +62,13 @@
             silent = true;
             desc = "Toggle sidebar";
           }
+          {
+            key = "<leader>/";
+            mode = "n";
+            action = "gc";
+            silent = true;
+            desc = "Toggle comment";
+          }
         ];
       };
     };

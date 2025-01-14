@@ -87,10 +87,10 @@ in {
 
   #qt.style.package = pkgs.adwaita-qt;
 
-  gtk.enable = true;
+  #gtk.enable = true;
 
-  gtk.theme.package = pkgs.orchis-theme;
-  gtk.theme.name = "orchis-theme";
+  #gtk.theme.package = pkgs.orchis-theme;
+  #gtk.theme.name = "orchis-theme";
 
   #gtk.iconTheme.package = gruvbox_icons;
   #gtk.iconTheme.name = "gruvbox-plus";

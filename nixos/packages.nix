@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [];
-  };
+  #nixpkgs.config = {
+  #  allowUnfree = true;
+  #  permittedInsecurePackages = [];
+  #};
 
   environment.systemPackages = with pkgs; [
     # terminal
@@ -11,7 +11,6 @@
     zsh-prezto
 
     # utils
-    neofetch
     file
     tree
     wget
@@ -25,6 +24,7 @@
     lazygit
     rofi
     wofi
+    fzf
 
     # coding
     neovim
@@ -33,23 +33,14 @@
     gcc
     lldb
     (python3.withPackages (ps: with ps; [requests]))
-    zig
-    zls
-
-    glfw-wayland
-    wayland
-    wayland-protocols
-    xorg.libX11
-    xorg.libXcursor
-    xorg.libXi
-    xorg.libXinerama
-    xorg.libXrandr
-    xorg.libXxf86vm
 
     # productivity/social
     obs-studio
     discord
     obsidian
+
+    nix-search-cli
+    mission-center
 
     #entertainment
     vlc
@@ -58,11 +49,12 @@
 
     # Music
     youtube-music
-    bitwig-studio
+    bitwig-studio5-latest
     yabridge
     yabridgectl
 
     # Wayland stuff
+    wayland
     xwayland
     wl-clipboard
     cliphist

@@ -18,6 +18,19 @@ with lib.hm.gvariant;
       window-width = 1529;
     };
 
+    "io/missioncenter/MissionCenter" = {
+      performance-selected-page = "cpu";
+      window-height = 795;
+      window-selected-page = "apps-page";
+      window-width = 1633;
+    };
+
+    "net/nokyan/Resources" = {
+      last-viewed-page = "processes";
+      processes-sort-by = mkUint32 2;
+      processes-sort-by-ascending = true;
+    };
+
     "org/gnome/Console" = {
       last-window-maximised = false;
       last-window-size = mkTuple [ 1815 964 ];
@@ -29,8 +42,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/control-center" = {
-      last-panel = "multitasking";
-      window-state = mkTuple [ 980 640 false ];
+      last-panel = "power";
+      window-state = mkTuple [ 2045 1155 true ];
     };
 
     "org/gnome/desktop/app-folders" = {
@@ -83,7 +96,15 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "gnome-power-panel" ];
+      application-children = [ "org-gnome-console" "gnome-power-panel" "firefox" "discord" "org-gnome-nautilus" ];
+    };
+
+    "org/gnome/desktop/notifications/application/discord" = {
+      application-id = "discord.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      application-id = "firefox.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -96,6 +117,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/org-gnome-console" = {
       application-id = "org.gnome.Console.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
+      application-id = "org.gnome.Nautilus.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-settings" = {
@@ -126,6 +151,10 @@ with lib.hm.gvariant;
     "org/gnome/desktop/search-providers" = {
       enabled = [ "org.gnome.Weather.desktop" ];
       sort-order = [ "org.gnome.Settings.desktop" "org.gnome.Contacts.desktop" "org.gnome.Nautilus.desktop" ];
+    };
+
+    "org/gnome/desktop/session" = {
+      idle-delay = mkUint32 0;
     };
 
     "org/gnome/desktop/wm/keybindings" = {
@@ -181,8 +210,8 @@ with lib.hm.gvariant;
       raise-or-lower = [];
       set-spew-mark = [];
       show-desktop = [];
-      switch-applications = [];
-      switch-applications-backward = [];
+      switch-applications = [ "<Alt>Tab" ];
+      switch-applications-backward = [ "<Shift><Alt>Tab" ];
       switch-group = [];
       switch-group-backward = [];
       switch-input-source = [];
@@ -217,7 +246,7 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/wm/preferences" = {
       button-layout = "appmenu:minimize,maximize,close";
-      num-workspaces = 10;
+      num-workspaces = 4;
       resize-with-right-button = true;
     };
 
@@ -240,6 +269,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/gnome-system-monitor" = {
+      current-tab = "processes";
       show-dependencies = false;
       show-whose-processes = "user";
       window-height = 1060;
@@ -249,6 +279,9 @@ with lib.hm.gvariant;
     "org/gnome/gnome-system-monitor/proctree" = {
       col-26-visible = false;
       col-26-width = 0;
+      columns-order = [ 0 12 1 2 3 4 6 7 8 9 10 11 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
+      sort-col = 0;
+      sort-order = 0;
     };
 
     "org/gnome/mutter" = {
@@ -261,7 +294,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/nautilus/preferences" = {
-      default-folder-viewer = "icon-view";
+      default-folder-viewer = "list-view";
       migrated-gtk-settings = true;
       search-filter-time-type = "last_modified";
     };
@@ -293,10 +326,15 @@ with lib.hm.gvariant;
       name = "Open Terminal";
     };
 
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-timeout = 1800;
+      sleep-inactive-ac-type = "suspend";
+    };
+
     "org/gnome/shell" = {
-      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
-      favorite-apps = [ "firefox.desktop" "org.gnome.Nautilus.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" "rust-rover.desktop" "obsidian.desktop" "youtube-music.desktop" ];
+      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" ];
+      favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" "rust-rover.desktop" "obsidian.desktop" "youtube-music.desktop" "discord.desktop" ];
       welcome-dialog-last-shown-version = "47.2";
     };
 
@@ -422,7 +460,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell/extensions/workspace-indicator" = {
-      embed-previews = false;
+      embed-previews = true;
     };
 
     "org/gnome/shell/keybindings" = {
@@ -458,7 +496,7 @@ with lib.hm.gvariant;
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 679 246 ];
+      window-position = mkTuple [ 3239 246 ];
       window-size = mkTuple [ 1203 902 ];
     };
 
