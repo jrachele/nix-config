@@ -16,6 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    musnix = {url = "github:musnix/musnix";};
+
     #zig.url = "github:mitchellh/zig-overlay";
   };
 
@@ -25,6 +27,7 @@
     home-manager,
     nvf,
     audio,
+    musnix,
     ...
   } @ inputs: let
     lib = nixpkgs.lib;
@@ -43,6 +46,7 @@
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.default
+          musnix.nixosModules.musnix
         ];
       };
     };

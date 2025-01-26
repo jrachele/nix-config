@@ -7,6 +7,7 @@
     ./git.nix
     ./gnome.nix
     ./nvf.nix
+    ./syncthing.nix
     ./zellij
     ./zsh.nix
   ];

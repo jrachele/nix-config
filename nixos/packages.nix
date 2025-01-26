@@ -25,6 +25,15 @@
     rofi
     wofi
     fzf
+    pciutils
+
+    # wine
+    (wine.override {wineBuild = "wine64";})
+    wine64
+    wine64Packages.base
+    winetricks
+    wineasio
+    wineWow64Packages.full
 
     # coding
     neovim
@@ -52,6 +61,11 @@
     bitwig-studio5-latest
     yabridge
     yabridgectl
+
+    pavucontrol
+    libjack2
+    jack2
+    qjackctl
 
     # Wayland stuff
     wayland

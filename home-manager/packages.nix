@@ -4,7 +4,8 @@
     dconf-editor
     helix
     zellij
-    ghostty
-    emacs
+    syncthing
+    obs-studio
+    musescore
   ];
 }

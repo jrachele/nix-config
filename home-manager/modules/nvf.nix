@@ -69,6 +69,13 @@
             silent = true;
             desc = "Toggle comment";
           }
+          {
+            key = "<leader>q";
+            mode = "n";
+            action = ":quitall<CR>";
+            silent = true;
+            desc = "Quit all";
+          }
         ];
       };
     };

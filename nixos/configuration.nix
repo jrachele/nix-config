@@ -55,16 +55,16 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm = {
     enable = true;
-    wayland = true;
+    wayland = false;
   };
 
   services.xserver.desktopManager.gnome = {
     enable = true;
-    extraGSettingsOverridePackages = [pkgs.mutter];
-    extraGSettingsOverrides = ''
-      [org.gnome.mutter]
-      experimental-features=['scale-monitor-framebuffer']
-    '';
+    #extraGSettingsOverridePackages = [pkgs.mutter];
+    #extraGSettingsOverrides = ''
+    #  [org.gnome.mutter]
+    #  experimental-features=['scale-monitor-framebuffer']
+    #'';
   };
 
   # Configure keymap in X11
@@ -76,22 +76,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # TODO Move this to a separate module
   programs.zsh.enable = true;
@@ -99,8 +83,23 @@
   users.users.juge = {
     isNormalUser = true;
     description = "juge";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "audio" "jackaudio" "realtime" "wheel"];
     shell = pkgs.zsh;
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  musnix = {
+    enable = true;
+    alsaSeq.enable = true;
+    kernel.realtime = true;
+    kernel.packages = pkgs.linuxPackages_latest_rt;
   };
 
   # Enable automatic login for the user.
@@ -126,7 +125,7 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = false;
+    powerManagement.enable = true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).

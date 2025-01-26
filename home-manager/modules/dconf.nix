@@ -41,8 +41,13 @@ with lib.hm.gvariant;
       window-width = 1240;
     };
 
+    "org/gnome/Totem" = {
+      active-plugins = [ "rotation" "save-file" "apple-trailers" "vimeo" "mpris" "skipto" "autoload-subtitles" "variable-rate" "movie-properties" "screenshot" "screensaver" "recent" "open-directory" ];
+      subtitle-encoding = "UTF-8";
+    };
+
     "org/gnome/control-center" = {
-      last-panel = "power";
+      last-panel = "display";
       window-state = mkTuple [ 2045 1155 true ];
     };
 
@@ -96,7 +101,7 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "org-gnome-console" "gnome-power-panel" "firefox" "discord" "org-gnome-nautilus" ];
+      application-children = [ "org-gnome-console" "gnome-power-panel" "firefox" "discord" "org-gnome-nautilus" "rust-rover" ];
     };
 
     "org/gnome/desktop/notifications/application/discord" = {
@@ -125,6 +130,10 @@ with lib.hm.gvariant;
 
     "org/gnome/desktop/notifications/application/org-gnome-settings" = {
       application-id = "org.gnome.Settings.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/rust-rover" = {
+      application-id = "rust-rover.desktop";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
@@ -180,8 +189,8 @@ with lib.hm.gvariant;
       move-to-corner-se = [];
       move-to-corner-sw = [];
       move-to-monitor-down = [];
-      move-to-monitor-left = [];
-      move-to-monitor-right = [];
+      move-to-monitor-left = [ "<Shift><Super>h" ];
+      move-to-monitor-right = [ "<Shift><Super>l" ];
       move-to-monitor-up = [];
       move-to-side-e = [];
       move-to-side-n = [];
@@ -232,8 +241,6 @@ with lib.hm.gvariant;
       switch-to-workspace-9 = [ "<Super>9" ];
       switch-to-workspace-down = [];
       switch-to-workspace-last = [];
-      switch-to-workspace-left = [];
-      switch-to-workspace-right = [];
       switch-to-workspace-up = [];
       switch-windows = [];
       switch-windows-backward = [];
@@ -254,9 +261,24 @@ with lib.hm.gvariant;
       migrated = true;
     };
 
+    "org/gnome/file-roller/dialogs/extract" = {
+      height = 800;
+      recreate-folders = true;
+      skip-newer = false;
+      width = 1000;
+    };
+
+    "org/gnome/file-roller/file-selector" = {
+      show-hidden = false;
+      sidebar-size = 300;
+      sort-method = "name";
+      sort-type = "ascending";
+      window-size = mkTuple [ (-1) (-1) ];
+    };
+
     "org/gnome/file-roller/listing" = {
       list-mode = "as-folder";
-      name-column-width = 65;
+      name-column-width = 1193;
       show-path = false;
       sort-method = "name";
       sort-type = "ascending";
@@ -264,8 +286,8 @@ with lib.hm.gvariant;
 
     "org/gnome/file-roller/ui" = {
       sidebar-width = 200;
-      window-height = 480;
-      window-width = 600;
+      window-height = 862;
+      window-width = 1743;
     };
 
     "org/gnome/gnome-system-monitor" = {
@@ -310,6 +332,7 @@ with lib.hm.gvariant;
     "org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
       home = [ "<Super>bracketright" ];
+      screensaver = [];
       search = [ "<Super>d" ];
       www = [ "<Super>backslash" ];
     };
@@ -332,8 +355,8 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "status-icons@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
-      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" ];
+      disabled-extensions = [ "light-style@gnome-shell-extensions.gcampax.github.com" "windowsNavigator@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "auto-move-windows@gnome-shell-extensions.gcampax.github.com" "apps-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "window-list@gnome-shell-extensions.gcampax.github.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+      enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" "system-monitor@gnome-shell-extensions.gcampax.github.com" "openbar@neuromorph" "dash-to-dock@micxgx.gmail.com" "focus-changer@heartmire" "status-icons@gnome-shell-extensions.gcampax.github.com" "appindicatorsupport@rgcjonas.gmail.com" ];
       favorite-apps = [ "org.gnome.Nautilus.desktop" "firefox.desktop" "kitty.desktop" "com.bitwig.BitwigStudio.desktop" "rust-rover.desktop" "obsidian.desktop" "youtube-music.desktop" "discord.desktop" ];
       welcome-dialog-last-shown-version = "47.2";
     };
@@ -485,10 +508,23 @@ with lib.hm.gvariant;
       selected-color = mkTuple [ true 1.6667e-2 1.6667e-2 1.6667e-2 1.0 ];
     };
 
+    "org/gtk/gtk4/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = true;
+      sidebar-width = 140;
+      sort-column = "name";
+      sort-directories-first = true;
+      sort-order = "ascending";
+      type-format = "category";
+      view-type = "list";
+      window-size = mkTuple [ 857 372 ];
+    };
+
     "org/gtk/settings/file-chooser" = {
       date-format = "regular";
       location-mode = "path-bar";
-      show-hidden = false;
+      show-hidden = true;
       show-size-column = true;
       show-type-column = true;
       sidebar-width = 157;
@@ -496,7 +532,7 @@ with lib.hm.gvariant;
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 3239 246 ];
+      window-position = mkTuple [ 26 23 ];
       window-size = mkTuple [ 1203 902 ];
     };
 
